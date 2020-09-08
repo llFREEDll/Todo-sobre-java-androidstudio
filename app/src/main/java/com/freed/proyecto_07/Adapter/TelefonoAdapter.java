@@ -11,7 +11,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.freed.proyecto_07.MainActivity;
 import com.freed.proyecto_07.R;
 import com.freed.proyecto_07.models.Telefono;
 import com.freed.proyecto_07.saveDataHelper.SharePreferencesHelper;
@@ -23,7 +22,7 @@ import static androidx.navigation.Navigation.findNavController;
 
 public class TelefonoAdapter extends BaseAdapter {
 
-    LayoutInflater inflater;
+    private LayoutInflater inflater;
     private int list_item_layout;
     private Context context;
     private List<Telefono> telefonos;
@@ -34,7 +33,7 @@ public class TelefonoAdapter extends BaseAdapter {
         this.context=context;
         this.list_item_layout = list_item_layout;
         this.telefonos=telefonos;
-        inflater = (LayoutInflater) ((Activity)context).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = (LayoutInflater) ((Activity)context).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -132,7 +131,9 @@ public class TelefonoAdapter extends BaseAdapter {
         return contentView;
     }
     public void setRequireView(View requireView){
+
         this.requireView = requireView;
+
     }
     static class TelefonoHolder
     {

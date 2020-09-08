@@ -51,11 +51,11 @@ public class FireStoreHelper {
                 if (task.isComplete()){
 
                     status.status("Telefono Agregado");
-                    System.out.println("agregado");
+
 
                 }else {
                     status.status("Telefono no Agregado");
-                    System.out.println("error" + task.getException().getMessage());
+
                 }
                 dialog.dismiss();
             }

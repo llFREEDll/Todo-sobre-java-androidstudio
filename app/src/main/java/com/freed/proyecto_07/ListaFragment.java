@@ -31,6 +31,7 @@ public class ListaFragment extends Fragment implements Status, Telefonos {
     private FireStoreHelper firestoreHelper = new FireStoreHelper();
 
 
+
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,7 @@ public class ListaFragment extends Fragment implements Status, Telefonos {
 
     @Override
     public void onStart() {
+
         firestoreHelper.getAllTelefonos();
         super.onStart();
 
@@ -50,11 +52,14 @@ public class ListaFragment extends Fragment implements Status, Telefonos {
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_lista, container, false);
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
         listView_telefonos = view.findViewById(R.id.listView_lista);
         imageButton_add = view.findViewById(R.id.imageButton_add);
@@ -82,8 +87,9 @@ public class ListaFragment extends Fragment implements Status, Telefonos {
     public void getAll(List<Telefono> telefonoList) {
         progressBar.setVisibility(View.INVISIBLE);
         listView_telefonos.setVisibility(View.VISIBLE);
-        TelefonoAdapter adapterTelefono = new TelefonoAdapter(getContext(),R.layout.list_item_telefono,telefonoList);
-        adapterTelefono.setRequireView(requireView());
+        TelefonoAdapter adapterTelefono;
+        adapterTelefono = new TelefonoAdapter(ListaFragment.this.getContext(),R.layout.list_item_telefono,telefonoList);
+        adapterTelefono.setRequireView(getView());
         listView_telefonos.setAdapter(adapterTelefono);
 
     }
